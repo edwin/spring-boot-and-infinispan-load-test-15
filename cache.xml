@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<replicated-cache name="GEN_MD_ACCOUNT" mode="SYNC" remote-timeout="600000" statistics="true">
+	<encoding media-type="application/x-protostream"/>
+	<locking concurrency-level="25000" isolation="READ_COMMITTED" acquire-timeout="3000000" striping="false"/>
+	<transaction mode="NONE" auto-commit="true" stop-timeout="30000" locking="OPTIMISTIC" reaper-interval="30000" complete-timeout="30000" notifications="true"/>
+	<memory storage="OFF_HEAP" max-size="30000000000"/>
+	<query default-max-results="1000" hit-count-accuracy="100"/>
+	<indexing enabled="true" storage="local-heap" path="GEN_MD_ACCOUNT">
+		<indexed-entities>
+			<indexed-entity>default.GenMdAccountEntity</indexed-entity>
+		</indexed-entities>
+	</indexing>
+	<state-transfer timeout="600000" chunk-size="500" await-initial-transfer="true"/>
+	<partition-handling when-split="ALLOW_READS" merge-policy="NONE"/>
+</replicated-cache>
+
+<?xml version="1.0"?>
+<replicated-cache name="GEN_MD_INSTRUMENT" mode="SYNC" remote-timeout="600000" statistics="true">
+	<encoding media-type="application/x-protostream"/>
+	<locking concurrency-level="25000" isolation="READ_COMMITTED" acquire-timeout="3000000" striping="false"/>
+	<transaction mode="NONE" auto-commit="true" stop-timeout="30000" locking="OPTIMISTIC" reaper-interval="30000" complete-timeout="30000" notifications="true"/>
+	<query default-max-results="1000" hit-count-accuracy="100"/>
+	<indexing enabled="true" storage="local-heap" path="GEN_MD_INSTRUMENT">
+		<indexed-entities>
+			<indexed-entity>default.GenMdInstrumentEntity</indexed-entity>
+		</indexed-entities>
+	</indexing>
+	<state-transfer timeout="600000" chunk-size="500" await-initial-transfer="true"/>
+	<partition-handling when-split="ALLOW_READS" merge-policy="NONE"/>
+</replicated-cache>
+
+<?xml version="1.0"?>
+<replicated-cache name="GEN_MD_MEMBER" mode="SYNC" remote-timeout="600000" statistics="true">
+	<encoding media-type="application/x-protostream"/>
+	<locking concurrency-level="25000" isolation="READ_COMMITTED" acquire-timeout="3000000" striping="false"/>
+	<transaction mode="NONE" auto-commit="true" stop-timeout="30000" locking="OPTIMISTIC" reaper-interval="30000" complete-timeout="30000" notifications="true"/>
+	<query default-max-results="1000" hit-count-accuracy="100"/>
+	<indexing enabled="true" storage="local-heap" path="GEN_MD_MEMBER">
+		<indexed-entities>
+			<indexed-entity>default.GenMdMemberEntity</indexed-entity>
+		</indexed-entities>
+	</indexing>
+	<state-transfer timeout="600000" chunk-size="500" await-initial-transfer="true"/>
+	<partition-handling when-split="ALLOW_READS" merge-policy="NONE"/>
+</replicated-cache>
+
+<?xml version="1.0"?>
+<replicated-cache name="GEN_MD_SID_MAPPING" mode="SYNC" remote-timeout="600000" statistics="true">
+	<encoding media-type="application/x-protostream"/>
+	<locking concurrency-level="25000" isolation="READ_COMMITTED" acquire-timeout="3000000" striping="false"/>
+	<transaction mode="NONE" auto-commit="true" stop-timeout="30000" locking="OPTIMISTIC" reaper-interval="30000" complete-timeout="30000" notifications="true"/>
+	<query default-max-results="1000" hit-count-accuracy="100"/>
+	<indexing enabled="true" storage="local-heap" path="GEN_MD_SID_MAPPING">
+		<indexed-entities>
+			<indexed-entity>default.GenMdSidMappingEntity</indexed-entity>
+		</indexed-entities>
+	</indexing>
+	<state-transfer timeout="600000" chunk-size="500" await-initial-transfer="true"/>
+	<partition-handling when-split="ALLOW_READS" merge-policy="NONE"/>
+</replicated-cache>
