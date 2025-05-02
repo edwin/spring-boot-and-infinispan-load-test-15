@@ -4,7 +4,7 @@
 - Spring Boot 3.2.5
 - Infinispan 15.0.8.Final for Server
 - Infinispan 15.0.8.Final-redhat-00001 for Client
-- Java 17
+- Java 21
 
 ## How to Start Infinispan
 ```
