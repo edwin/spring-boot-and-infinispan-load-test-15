@@ -114,5 +114,13 @@ public class CacheHelper {
         return query.execute().list();
     }
 
+    public List<GenMdAccountEntity> getAccountId(String accId) {
+        final RemoteCache cache = remoteCacheManager.getCache("GEN_MD_ACCOUNT");
+        QueryFactory queryFactory = Search.getQueryFactory(cache);
+        Query<GenMdAccountEntity> query = queryFactory.create("from default.GenMdAccountEntity where accountId in ( :param1 )");
+        query.setParameter("param1", accId);
+        return query.execute().list();
+    }
+
 
 }

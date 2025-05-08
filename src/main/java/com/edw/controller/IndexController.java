@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -47,14 +50,39 @@ public class IndexController {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < dataCount; i++) {
             listSID.add(String.format("%06d", number));
-            listAcc.add(String.format("%10d", number));
             listShortCode.add("DX");
             listShortCode.add("YP");
             listShortCode.add("PD");
         }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("accid.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                listAcc.add(line.trim());
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         log.info("Initiate Data DONE : {}", System.currentTimeMillis()-startTime);
     }
 
+
+    @GetMapping(path = "/get-md-account")
+    public Map getMdAccount() {
+        log.info("Start get-md-account Data (/get-md-account)");
+
+        for (String accId : listAcc) {
+            long startTime = System.currentTimeMillis();
+            log.trace(""+cacheHelper.getAccountId(accId));
+            log.info("Duration get-md-account : {} - {}", accId, System.currentTimeMillis()-startTime);
+        }
+        log.info("End get-md-account Data (/get-md-account)");
+
+        return new HashMap() {{
+            put("status", "success");
+        }};
+    }
     @GetMapping(path = "/")
     public Map index() {
         return new HashMap() {{
