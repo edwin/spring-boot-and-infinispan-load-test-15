@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * <pre>
@@ -67,6 +68,28 @@ public class IndexController {
         log.info("Initiate Data DONE : {}", System.currentTimeMillis()-startTime);
     }
 
+
+
+    @GetMapping(path = "/generate-md-account")
+    public Map generateMdAccount() {
+
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
+
+        for (int i = 0; i < 100; i++) {
+            executor.execute(() ->
+                    executor.execute(() -> {
+                        for (String accId : listAcc) {
+                            log.info("saving : {}", accId);
+                            cacheHelper.saveAccountId(accId);
+                        }
+                    })
+            );
+        }
+
+        return new HashMap() {{
+            put("status", "success");
+        }};
+    }
 
     @GetMapping(path = "/get-md-account")
     public Map getMdAccount() {

@@ -50,7 +50,7 @@ public class GenMdAccountEntity {
 
     private String accountBuyerSeller;
 
-    @ProtoField(type = Type.INT64, number = 1)
+    @ProtoField(type = Type.INT64, number = 1, name = "ACCOUNT_ID")
     @Basic(sortable = true, searchable = true, projectable = true)
     public Long getAccountId() {
         return accountId;
@@ -60,7 +60,7 @@ public class GenMdAccountEntity {
         this.accountId = accountId;
     }
 
-    @ProtoField(type = Type.STRING, number = 2)
+    @ProtoField(type = Type.STRING, number = 2, name = "ACCOUNT_CODE")
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getAccountCode() {
         return accountCode;
@@ -70,7 +70,7 @@ public class GenMdAccountEntity {
         this.accountCode = accountCode;
     }
 
-    @ProtoField(type = Type.INT64, number = 3)
+    @ProtoField(name = "MEMBER_ID", type = Type.INT64, number = 3)
     @Basic(sortable = true, searchable = true, projectable = true)
     public Long getMemberId() {
         return memberId;
@@ -80,7 +80,7 @@ public class GenMdAccountEntity {
         this.memberId = memberId;
     }
 
-    @ProtoField(type = Type.STRING, number = 4)
+    @ProtoField(name = "CLIENT_CODE", type = Type.STRING, number = 4)
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getClientCode() {
         return clientCode;
@@ -90,7 +90,7 @@ public class GenMdAccountEntity {
         this.clientCode = clientCode;
     }
 
-    @ProtoField(type = Type.STRING, number = 5)
+    @ProtoField(name = "ACCOUNT_TYPE", type = Type.STRING, number = 5)
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getAccountType() {
         return accountType;
@@ -100,7 +100,7 @@ public class GenMdAccountEntity {
         this.accountType = accountType;
     }
 
-    @ProtoField(type = Type.STRING, number = 6)
+    @ProtoField(name = "CHECK_DIGIT", type = Type.STRING, number = 6)
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getCheckDigit() {
         return checkDigit;
@@ -110,7 +110,7 @@ public class GenMdAccountEntity {
         this.checkDigit = checkDigit;
     }
 
-    @ProtoField(type = Type.STRING, number = 7)
+    @ProtoField(name = "ACCOUNT_NAME", type = Type.STRING, number = 7)
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getAccountName() {
         return accountName;
@@ -120,7 +120,7 @@ public class GenMdAccountEntity {
         this.accountName = accountName;
     }
 
-    @ProtoField(type = Type.STRING, number = 8)
+    @ProtoField(name = "ACCOUNT_POSITION", type = Type.STRING, number = 8)
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getAccountPosition() {
         return accountPosition;
@@ -130,7 +130,7 @@ public class GenMdAccountEntity {
         this.accountPosition = accountPosition;
     }
 
-    @ProtoField(type = Type.STRING, number = 9)
+    @ProtoField(name = "CORRESPOND_ACNO", type = Type.STRING, number = 9)
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getCorrespondAcNo() {
         return correspondAcNo;
@@ -140,7 +140,7 @@ public class GenMdAccountEntity {
         this.correspondAcNo = correspondAcNo;
     }
 
-    @ProtoField(type = Type.STRING, number = 10)
+    @ProtoField(name = "BLOCKING_REASON", type = Type.STRING, number = 10)
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getBlockingReason() {
         return blockingReason;
@@ -150,7 +150,7 @@ public class GenMdAccountEntity {
         this.blockingReason = blockingReason;
     }
 
-    @ProtoField(type = Type.STRING, number = 11)
+    @ProtoField( name = "ACCOUNT_STATUS", type = Type.STRING, number = 11)
     @Basic(sortable = true, searchable = true, projectable = true)
     public String getAccountStatus() {
         return accountStatus;
@@ -161,7 +161,7 @@ public class GenMdAccountEntity {
         this.accountStatus = accountStatus;
     }
 
-    @ProtoField(type = Type.STRING, number = 12)
+    @ProtoField(name = "CREATED_BY", type = Type.STRING, number = 12)
     public String getCreatedBy() {
         return createdBy;
     }
@@ -170,7 +170,7 @@ public class GenMdAccountEntity {
         this.createdBy = createdBy;
     }
 
-    @ProtoField(type = Type.INT64, number = 13)
+    @ProtoField(name = "CREATED_ON", type = Type.INT64, number = 13)
     public Date getCreatedOn() {
         return createdOn;
     }
@@ -179,7 +179,7 @@ public class GenMdAccountEntity {
         this.createdOn = createdOn;
     }
 
-    @ProtoField(type = Type.STRING, number = 14)
+    @ProtoField(name = "MODIFIED_BY", type = Type.STRING, number = 14)
     public String getModifiedBy() {
         return modifiedBy;
     }
@@ -188,7 +188,7 @@ public class GenMdAccountEntity {
         this.modifiedBy = modifiedBy;
     }
 
-    @ProtoField(type = Type.INT64, number = 15)
+    @ProtoField(name = "MODIFIED_ON", type = Type.INT64, number = 15)
     public Date getModifiedOn() {
         return modifiedOn;
     }
@@ -197,7 +197,7 @@ public class GenMdAccountEntity {
         this.modifiedOn = modifiedOn;
     }
 
-    @ProtoField(type = Type.STRING, number = 16)
+    @ProtoField(name = "CHECKED_BY", type = Type.STRING, number = 16)
     public String getCheckedBy() {
         return checkedBy;
     }
@@ -243,7 +243,11 @@ public class GenMdAccountEntity {
         this.accountBuyerSeller = accountBuyerSeller;
     }
 
-    public GenMdAccountEntity(Long accountId, String accountCode, Long memberId, String clientCode, String accountType, String checkDigit, String accountName, String accountPosition, String correspondAcNo, String blockingReason, String accountStatus, String createdBy, Date createdOn, String modifiedBy, Date modifiedOn, String checkedBy, Date checkedOn, String approvedBy, Date approvedOn, String accountBuyerSeller) {
+    public GenMdAccountEntity(Long accountId, String accountCode, Long memberId, String clientCode,
+                              String accountType, String checkDigit, String accountName, String accountPosition,
+                              String correspondAcNo, String blockingReason, String accountStatus, String createdBy,
+                              Date createdOn, String modifiedBy, Date modifiedOn, String checkedBy,
+                              Date checkedOn, String approvedBy, Date approvedOn, String accountBuyerSeller) {
         this.accountId = accountId;
         this.accountCode = accountCode;
         this.memberId = memberId;

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <pre>
@@ -115,11 +116,23 @@ public class CacheHelper {
     }
 
     public List<GenMdAccountEntity> getAccountId(String accId) {
+						final RemoteCache cache = remoteCacheManager.getCache("GEN_MD_ACCOUNT");
+						QueryFactory queryFactory = Search.getQueryFactory(cache);
+						Query<GenMdAccountEntity> query = queryFactory.create("from default.GenMdAccountEntity where ACCOUNT_ID = :param1");
+						query.setParameter("param1", accId);
+
+						return query.execute().list();
+    }
+
+
+    public void saveAccountId(String accId) {
         final RemoteCache cache = remoteCacheManager.getCache("GEN_MD_ACCOUNT");
-        QueryFactory queryFactory = Search.getQueryFactory(cache);
-        Query<GenMdAccountEntity> query = queryFactory.create("from default.GenMdAccountEntity where accountId in ( :param1 )");
-        query.setParameter("param1", accId);
-        return query.execute().list();
+        cache.put(UUID.randomUUID().toString(), new GenMdAccountEntity(Long.parseLong(accId), ""+accId, 0l, "111",
+                "A", "00", "aaa", "2222",
+                "A", "00", "aaa", "2222",
+                null, "00", null, "2222",
+                null, "00", null, "2222"
+                ));
     }
 
 

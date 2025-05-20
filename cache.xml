@@ -3,12 +3,12 @@
 	<encoding media-type="application/x-protostream"/>
 	<locking concurrency-level="25000" isolation="READ_COMMITTED" acquire-timeout="3000000" striping="false"/>
 	<transaction mode="NONE" auto-commit="true" stop-timeout="30000" locking="OPTIMISTIC" reaper-interval="30000" complete-timeout="30000" notifications="true"/>
-	<memory storage="OFF_HEAP" max-size="30000000000"/>
-	<query default-max-results="1000" hit-count-accuracy="100"/>
-	<indexing enabled="true" storage="local-heap" path="GEN_MD_ACCOUNT">
+	<query default-max-results="20" hit-count-accuracy="10"/>
+	<indexing enabled="true" storage="filesystem" path="${java.io.tmpdir}/GEN_MD_ACCOUNT">
 		<indexed-entities>
 			<indexed-entity>default.GenMdAccountEntity</indexed-entity>
 		</indexed-entities>
+		<index-sharding shards="8" />
 	</indexing>
 	<state-transfer timeout="600000" chunk-size="500" await-initial-transfer="true"/>
 	<partition-handling when-split="ALLOW_READS" merge-policy="NONE"/>
